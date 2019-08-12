@@ -1,0 +1,31 @@
+--What was the hottest day in our data set? Where was that?
+SELECT 
+	zip, MAX(maxtemperaturef) AS max_temp
+FROM 
+	weather
+GROUP BY
+	zip
+ORDER BY
+	max_temp
+LIMIT 1
+
+--How many trips started at each station?
+SELECT start_station, COUNT(*)
+FROM trips
+GROUP BY start_station
+
+--What's the shortest trip that happened?
+SELECT MIN(duration)
+FROM trips
+
+--What is the average trip duration, by end station?
+SELECT end_station, AVG(duration)
+FROM trips
+GROUP BY end_station
+
+-- 1. Select name fields (with alias) and region 
+SELECT cities.name AS city, countries.name AS country, region
+FROM cities
+  INNER JOIN countries
+    ON cities.country_code = countries.code;
+
